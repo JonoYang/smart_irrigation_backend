@@ -1,0 +1,24 @@
+{{left_sidebar_enabled,right_sidebar_enabled=False,('message' in globals())}}
+{{extend 'layout.html'}}
+
+<table style="width:75%" align="center">
+  <tr>
+    <th>Time</th>
+    <th>Stake</th> 
+    <th>Sensor 1</th>
+    <th>Sensor 2</th>
+    <th>Sensor 3</th>
+    <th>Temperature</th>
+  </tr>
+
+  {{for entry in entries:}}
+  <tr>
+    <td>{{=entry.time}}</td>
+    <td>{{=entry.stake_id}}</td> 
+    <td>{{=entry.sensor_1}}</td>
+    <td>{{=entry.sensor_2}}</td>
+    <td>{{=entry.sensor_3}}</td>
+    <td>{{=entry.temp}}</td>
+  </tr>
+  {{pass}}
+</table>

@@ -1,0 +1,134 @@
+timestamp: 2016-02-22T19:40:42.807287
+CREATE TABLE auth_user(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    first_name CHAR(128),
+    last_name CHAR(128),
+    email CHAR(512),
+    password CHAR(512),
+    registration_key CHAR(512),
+    reset_password_key CHAR(512),
+    registration_id CHAR(512)
+);
+success!
+timestamp: 2016-02-22T19:40:42.855153
+CREATE TABLE auth_group(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    role CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2016-02-22T19:40:42.875989
+CREATE TABLE auth_membership(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE  
+);
+success!
+timestamp: 2016-02-22T19:40:42.903652
+CREATE TABLE auth_permission(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE  ,
+    name CHAR(512),
+    table_name CHAR(512),
+    record_id INTEGER
+);
+success!
+timestamp: 2016-02-22T19:40:42.931229
+CREATE TABLE auth_event(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    time_stamp TIMESTAMP,
+    client_ip CHAR(512),
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    origin CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2016-02-22T19:40:42.961790
+CREATE TABLE auth_cas(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    created_on TIMESTAMP,
+    service CHAR(512),
+    ticket CHAR(512),
+    renew CHAR(1)
+);
+success!
+timestamp: 2016-02-22T19:40:43.133242
+CREATE TABLE entry(
+    id INT AUTO_INCREMENT NOT NULL,
+    temp VARCHAR(512),
+    PRIMARY KEY (id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2016-02-24T17:05:25.271890
+ALTER TABLE entry ADD sensor_3 VARCHAR(512);
+success!
+timestamp: 2016-02-24T17:05:25.553218
+ALTER TABLE entry ADD sensor_2 VARCHAR(512);
+success!
+timestamp: 2016-02-24T17:05:25.619795
+ALTER TABLE entry ADD sensor_1 VARCHAR(512);
+success!
+timestamp: 2016-02-24T17:05:25.689048
+ALTER TABLE entry ADD time VARCHAR(512);
+success!
+success!
+timestamp: 2016-02-27T14:33:41.929391
+ALTER TABLE entry ADD temp__tmp INT;
+success!
+UPDATE entry SET temp__tmp=temp;
+success!
+ALTER TABLE entry DROP COLUMN temp;
+success!
+ALTER TABLE entry ADD temp INT;
+success!
+UPDATE entry SET temp=temp__tmp;
+success!
+ALTER TABLE entry DROP COLUMN temp__tmp;
+success!
+timestamp: 2016-02-27T14:33:42.660734
+ALTER TABLE entry ADD sensor_3__tmp INT;
+success!
+UPDATE entry SET sensor_3__tmp=sensor_3;
+success!
+ALTER TABLE entry DROP COLUMN sensor_3;
+success!
+ALTER TABLE entry ADD sensor_3 INT;
+success!
+UPDATE entry SET sensor_3=sensor_3__tmp;
+success!
+ALTER TABLE entry DROP COLUMN sensor_3__tmp;
+success!
+timestamp: 2016-02-27T14:33:43.057031
+ALTER TABLE entry ADD sensor_2__tmp INT;
+success!
+UPDATE entry SET sensor_2__tmp=sensor_2;
+success!
+ALTER TABLE entry DROP COLUMN sensor_2;
+success!
+ALTER TABLE entry ADD sensor_2 INT;
+success!
+UPDATE entry SET sensor_2=sensor_2__tmp;
+success!
+ALTER TABLE entry DROP COLUMN sensor_2__tmp;
+success!
+timestamp: 2016-02-27T14:33:43.393795
+ALTER TABLE entry ADD sensor_1__tmp INT;
+success!
+UPDATE entry SET sensor_1__tmp=sensor_1;
+success!
+ALTER TABLE entry DROP COLUMN sensor_1;
+success!
+ALTER TABLE entry ADD sensor_1 INT;
+success!
+UPDATE entry SET sensor_1=sensor_1__tmp;
+success!
+ALTER TABLE entry DROP COLUMN sensor_1__tmp;
+success!
+timestamp: 2016-02-27T14:33:43.733833
+ALTER TABLE entry ADD stake_id VARCHAR(512);
+success!
+timestamp: 2016-02-27T14:33:43.809812
+ALTER TABLE entry ADD julian_time VARCHAR(512);
+success!
+success!
